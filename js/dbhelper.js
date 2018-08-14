@@ -152,12 +152,27 @@ class DBHelper {
   static imageUrlForRestaurant(restaurant) {
     return (`/img/${restaurant.photograph}`);
   }
+  static imagesWebpSrcsetForRestaurant(restaurant) {
+    return (`/images/${restaurant.id}-200px.webp 200w,
+    /img/${restaurant.id}-400px.webp 400w,
+    /img/${restaurant.id}-800px.webp 800w`);
+  }
+
+  static imageSrcForRestaurant(restaurant) {
+    return (`/img/${restaurant.id}-200px.jpg`);
+  }
+
+  static imagesJpgSrcsetForRestaurant(restaurant) {
+    return (`/img/${restaurant.id}-200px.jpg 200w,
+    /img/${restaurant.id}-400px.jpg 400w,
+    /img/${restaurant.id}-800px.jpg 800w`);
+  }
 
   /**
    * Map marker for a restaurant.
    */
    static mapMarkerForRestaurant(restaurant, map) {
-    // https://leafletjs.com/reference-1.3.0.html#marker  
+    // https://leafletjs.com/reference-1.3.0.html#marker
     const marker = new L.marker([restaurant.latlng.lat, restaurant.latlng.lng],
       {title: restaurant.name,
       alt: restaurant.name,
@@ -165,7 +180,7 @@ class DBHelper {
       })
       marker.addTo(newMap);
     return marker;
-  } 
+  }
   /* static mapMarkerForRestaurant(restaurant, map) {
     const marker = new google.maps.Marker({
       position: restaurant.latlng,
@@ -178,4 +193,3 @@ class DBHelper {
   } */
 
 }
-
