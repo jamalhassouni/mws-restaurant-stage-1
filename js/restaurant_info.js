@@ -96,11 +96,11 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   picture.append(source);
 
   const image = document.createElement('img');
-    image.src = DBHelper.imageSrcForRestaurant(restaurant);
-    image.alt = `The restaurant ${restaurant.name}`;
-    image.sizes = '(max-width: 750px) 700px, (min-width: 751px) 48vw';
-    image.srcset = DBHelper.imagesJpgSrcsetForRestaurant(restaurant);
-    picture.append(image);
+  image.src = DBHelper.imageSrcForRestaurant(restaurant);
+  image.alt = `The restaurant ${restaurant.name}`;
+  image.sizes = '(max-width: 750px) 700px, (min-width: 751px) 48vw';
+  image.srcset = DBHelper.imagesJpgSrcsetForRestaurant(restaurant);
+  picture.append(image);
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
 
@@ -192,7 +192,7 @@ createReviewHTML = (review) => {
 /**
  * Add restaurant name to the breadcrumb navigation menu
  */
-fillBreadcrumb = (restaurant=self.restaurant) => {
+fillBreadcrumb = (restaurant = self.restaurant) => {
   const breadcrumb = document.getElementById('breadcrumb');
   const li = document.createElement('li');
   const a = document.createElement('a');

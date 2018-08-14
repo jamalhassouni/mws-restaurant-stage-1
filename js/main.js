@@ -73,10 +73,10 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
  */
 initMap = () => {
   self.newMap = L.map('map', {
-        center: [40.722216, -73.987501],
-        zoom: 12,
-        scrollWheelZoom: false
-      });
+    center: [40.722216, -73.987501],
+    zoom: 12,
+    scrollWheelZoom: false
+  });
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
     mapboxToken: 'sk.eyJ1IjoiamFtYWxoYXNzb3VuaSIsImEiOiJjamtzaDI1MW8wNm93M3BwbWVtZndjNDMyIn0.Fo3UsX6INxPod4bccGlAJg',
     maxZoom: 18,
@@ -155,47 +155,47 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
 /**
  * Create restaurant HTML.
  */
- const createRestaurantHTML = (restaurant) => {
-   const div = document.createElement('div');
-   div.className = 'restaurants-element';
+const createRestaurantHTML = (restaurant) => {
+  const div = document.createElement('div');
+  div.className = 'restaurants-element';
 
-   const picture = document.createElement('picture');
+  const picture = document.createElement('picture');
 
-   const source = document.createElement('source');
-   source.setAttribute('sizes', '(max-width: 730px) 570px, (min-width: 731px) 270px');
-   source.setAttribute('srcset', DBHelper.imagesWebpSrcsetForRestaurant(restaurant));
-   source.setAttribute('type', 'image/webp');
-   picture.append(source);
+  const source = document.createElement('source');
+  source.setAttribute('sizes', '(max-width: 730px) 570px, (min-width: 731px) 270px');
+  source.setAttribute('srcset', DBHelper.imagesWebpSrcsetForRestaurant(restaurant));
+  source.setAttribute('type', 'image/webp');
+  picture.append(source);
 
-   const image = document.createElement('img');
-   image.src = DBHelper.imageSrcForRestaurant(restaurant);
-   image.alt = `The restaurant ${restaurant.name}`;
-   image.sizes = '(max-width: 730px) 570px, (min-width: 731px) 270px';
-   image.srcset = DBHelper.imagesJpgSrcsetForRestaurant(restaurant);
-   picture.append(image);
+  const image = document.createElement('img');
+  image.src = DBHelper.imageSrcForRestaurant(restaurant);
+  image.alt = `The restaurant ${restaurant.name}`;
+  image.sizes = '(max-width: 730px) 570px, (min-width: 731px) 270px';
+  image.srcset = DBHelper.imagesJpgSrcsetForRestaurant(restaurant);
+  picture.append(image);
 
-   div.append(picture);
+  div.append(picture);
 
-   const name = document.createElement('h2');
-   name.textContent = restaurant.name;
-   name.tabIndex = 0;
-   div.append(name);
+  const name = document.createElement('h2');
+  name.textContent = restaurant.name;
+  name.tabIndex = 0;
+  div.append(name);
 
-   const neighborhood = document.createElement('p');
-   neighborhood.textContent = restaurant.neighborhood;
-   div.append(neighborhood);
+  const neighborhood = document.createElement('p');
+  neighborhood.textContent = restaurant.neighborhood;
+  div.append(neighborhood);
 
-   const address = document.createElement('p');
-   address.textContent = restaurant.address;
-   div.append(address);
+  const address = document.createElement('p');
+  address.textContent = restaurant.address;
+  div.append(address);
 
-   const more = document.createElement('a');
-   more.textContent = 'View Details';
-   more.href = DBHelper.urlForRestaurant(restaurant);
-   div.append(more);
+  const more = document.createElement('a');
+  more.textContent = 'View Details';
+  more.href = DBHelper.urlForRestaurant(restaurant);
+  div.append(more);
 
-   return div;
- };
+  return div;
+};
 
 /**
  * Add markers for current restaurants to the map.
@@ -205,6 +205,7 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     // Add marker to the map
     const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.newMap);
     marker.on("click", onClick);
+
     function onClick() {
       window.location.href = marker.options.url;
     }
@@ -225,14 +226,14 @@ addMarkersToMap = (restaurants = self.restaurants) => {
 
 // Register service worker
 
-if('serviceWorker' in navigator){
+if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-     navigator.serviceWorker.register('/sw.js').then((registration) => {
-       // Registration was successful
-       console.log('ServiceWorker registration successful with scope: ', registration.scope);
-     }, (err) => {
-       // registration failed :(
-       console.log('ServiceWorker registration failed: ', err);
-     });
-   });
+    navigator.serviceWorker.register('/sw.js').then((registration) => {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, (err) => {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
 }

@@ -1,14 +1,14 @@
 const CACHE_NAME = 'restaurant-app-v1';
 const urlsToCache = [
-       '/',
-       '/index.html',
-       '/restaurant.html',
-       '/css/styles.css',
-       '/js/dbhelper.js',
-       '/js/main.js',
-       '/js/restaurant_info.js',
-       '/data/restaurants.json',
-       '/img/',
+  '/',
+  '/index.html',
+  '/restaurant.html',
+  '/css/styles.css',
+  '/js/dbhelper.js',
+  '/js/main.js',
+  '/js/restaurant_info.js',
+  '/data/restaurants.json',
+  '/img/',
 ];
 /* add all image to urlsToCache array  */
 const makeImageNames = () => {
