@@ -155,34 +155,47 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
 /**
  * Create restaurant HTML.
  */
-createRestaurantHTML = (restaurant) => {
-  const li = document.createElement('li');
+ const createRestaurantHTML = (restaurant) => {
+   const div = document.createElement('div');
+   div.className = 'restaurants-element';
 
-  const image = document.createElement('img');
-  image.className = 'restaurant-img';
-  image.alt= restaurant.name;
-  image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  li.append(image);
+   const picture = document.createElement('picture');
 
-  const name = document.createElement('h1');
-  name.innerHTML = restaurant.name;
-  li.append(name);
+   const source = document.createElement('source');
+   source.setAttribute('sizes', '(max-width: 730px) 570px, (min-width: 731px) 270px');
+   source.setAttribute('srcset', DBHelper.imagesWebpSrcsetForRestaurant(restaurant));
+   source.setAttribute('type', 'image/webp');
+   picture.append(source);
 
-  const neighborhood = document.createElement('p');
-  neighborhood.innerHTML = restaurant.neighborhood;
-  li.append(neighborhood);
+   const image = document.createElement('img');
+   image.src = DBHelper.imageSrcForRestaurant(restaurant);
+   image.alt = `The restaurant ${restaurant.name}`;
+   image.sizes = '(max-width: 730px) 570px, (min-width: 731px) 270px';
+   image.srcset = DBHelper.imagesJpgSrcsetForRestaurant(restaurant);
+   picture.append(image);
 
-  const address = document.createElement('p');
-  address.innerHTML = restaurant.address;
-  li.append(address);
+   div.append(picture);
 
-  const more = document.createElement('a');
-  more.innerHTML = 'View Details';
-  more.href = DBHelper.urlForRestaurant(restaurant);
-  li.append(more)
+   const name = document.createElement('h2');
+   name.textContent = restaurant.name;
+   name.tabIndex = 0;
+   div.append(name);
 
-  return li
-}
+   const neighborhood = document.createElement('p');
+   neighborhood.textContent = restaurant.neighborhood;
+   div.append(neighborhood);
+
+   const address = document.createElement('p');
+   address.textContent = restaurant.address;
+   div.append(address);
+
+   const more = document.createElement('a');
+   more.textContent = 'View Details';
+   more.href = DBHelper.urlForRestaurant(restaurant);
+   div.append(more);
+
+   return div;
+ };
 
 /**
  * Add markers for current restaurants to the map.
