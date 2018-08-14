@@ -2,6 +2,8 @@
 <html>
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Normalize.css for better cross-browser consistency -->
   <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
   <!-- Main CSS file -->
@@ -10,18 +12,19 @@
   <title>Restaurant Info</title>
 </head>
 
-<body class="inside">
+<body class="inside" tabindex="-1">
   <!-- Beginning header -->
   <header>
     <!-- Beginning nav -->
-    <nav>
+    <nav role="navigation">
+      <a href="#restaurant-description" class="skip" tabindex="0">Skip to main content</a>
       <h1><a href="/">Restaurant Reviews</a></h1>
-    </nav>
     <!-- Beginning breadcrumb -->
     <ul aria-label"=Breadcrumb" id="breadcrumb" >
       <li><a href="/">Home</a></li>
     </ul>
     <!-- End breadcrumb -->
+  </nav>
     <!-- End nav -->
   </header>
   <!-- End header -->
@@ -29,24 +32,27 @@
   <!-- Beginning main -->
   <main id="maincontent">
     <!-- Beginning map -->
-    <section id="map-container">
-      <div id="map"></div>
+    <section id="map-container"  aria-label="A map with restaurants locations">
+      <div id="map" role="application"></div>
     </section>
     <!-- End map -->
     <!-- Beginning restaurant -->
     <section id="restaurant-container">
+      <div id="restaurant-description">
       <h1 id="restaurant-name" tabindex="0"></h1>
-      <img id="restaurant-img" tabindex="0">
+      <picture id="restaurant-img" tabindex="0">
+        </picture>
       <p id="restaurant-cuisine" tabindex="0"></p>
       <p id="restaurant-address" tabindex="0"></p>
       <table id="restaurant-hours" tabindex="0"></table>
-    </section>
+      </div>
     <!-- end restaurant -->
     <!-- Beginning reviews -->
     <section id="reviews-container">
       <ul id="reviews-list"></ul>
     </section>
     <!-- End reviews -->
+      </section>
   </main>
   <!-- End main -->
 
