@@ -71,7 +71,7 @@ nav h1 a {
     background-color: #eee;
     font-size: 17px;
     margin: 0;
-    width: calc(50% - 80px);
+    width: calc(100% - 80px);
 }
 
 /* Display list items side by side */
@@ -102,6 +102,7 @@ nav h1 a {
   height: 400px;
   width: 100%;
   background-color: #ccc;
+
 }
 /* ====================== Restaurant Filtering ====================== */
 .filter-options {
@@ -133,15 +134,21 @@ nav h1 a {
 #restaurants-list {
   background-color: #f3f3f3;
   list-style: outside none none;
-  margin: 0;
-  padding: 30px 15px 60px;
+  padding: 30px 0px 60px;
   text-align: center;
+  width: 100% ;
+  display: grid;
+  grid-column-gap: 1em;
+  grid-row-gap: 5em;
+  grid-template-columns: 1fr 1fr 1fr;
 }
+
+
 #restaurants-list li {
   background-color: #fff;
   border: 2px solid #ccc;
   font-family: Arial,sans-serif;
-  margin: 15px;
+
   min-height: 380px;
   padding: 0 30px 25px;
   text-align: left;
@@ -239,12 +246,10 @@ nav h1 a {
 #restaurant-container, #reviews-container {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
-  padding: 140px 40px 30px;
-  width: 50%;
+  padding: 10px 33px 30px;
+  width: 85%;
 }
-#reviews-container {
-  padding: 30px 40px 80px;
-}
+
 #reviews-container h2 {
   color: #f58500;
   font-size: 24pt;
@@ -272,4 +277,20 @@ nav h1 a {
 }
 #restaurant-hours td {
   color: #666;
+}
+
+/* if i changed screen width to 1000 or over than 1000px it will work */
+@media screen and  (min-width: 430px) and (max-width: 1038px)  {
+  #restaurants-list {
+ grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+/* if i changed screen width to 1000 or over than 1000px it will work */
+@media screen and (max-width: 429px)  {
+  #restaurants-list {
+ grid-template-columns: 1fr  ;
+ padding: 0 10px 25px;
+  }
 }
