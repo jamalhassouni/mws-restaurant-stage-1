@@ -151,7 +151,7 @@ class DBHelper {
    */
 
   static imagesWebpSrcsetForRestaurant(restaurant) {
-    return (`/images/${restaurant.id}-200px.webp 200w,
+    return (`/img/${restaurant.id}-200px.webp 200w,
     /img/${restaurant.id}-400px.webp 400w,
     /img/${restaurant.id}-800px.webp 800w`);
   }
