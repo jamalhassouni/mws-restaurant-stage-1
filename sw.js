@@ -1,27 +1,28 @@
 const CACHE_NAME = 'restaurant-app-v1';
 const urlsToCache = [
-  './',
-  './index.html',
-  './restaurant.html',
-  './data/restaurants.json',
-  './js/dbhelper.js',
-  './js/main.js',
-  './js/restaurant_info.js',
-  './css/main.css',
+       '/',
+       '/index.html',
+       '/restaurant.html',
+       '/css/styles.css',
+       '/js/dbhelper.js',
+       '/js/main.js',
+       '/js/restaurant_info.js',
+       '/data/restaurants.json',
+       '/img/',
 ];
-
+/* add all image to urlsToCache array  */
 const makeImageNames = () => {
-  const array = [];
+  const arrayImg = [];
 
   for (let i = 1; i < 11; i += 1) {
-    array.push(`/img/${i}-200px.webp`);
-    array.push(`/img/${i}-400px.webp`);
-    array.push(`/img/${i}-800px.webp`);
-    array.push(`/img/${i}-200px.jpg`);
-    array.push(`/img/${i}-400px.jpg`);
-    array.push(`/img/${i}-800px.jpg`);
+    arrayImg.push(`/img/${i}-200px.webp`);
+    arrayImg.push(`/img/${i}-400px.webp`);
+    arrayImg.push(`/img/${i}-800px.webp`);
+    arrayImg.push(`/img/${i}-200px.jpg`);
+    arrayImg.push(`/img/${i}-400px.jpg`);
+    arrayImg.push(`/img/${i}-800px.jpg`);
   }
-  return array;
+  return arrayImg;
 };
 
 urlsToCache.concat(makeImageNames());
