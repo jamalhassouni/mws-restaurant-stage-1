@@ -4,6 +4,11 @@
 
  This is a project for Udacity Frontend course.
 
+
+## Details
+
+For the Restaurant Reviews projects, I had to incrementally convert a static webpage to a mobile-ready web application. In Stage One, I take a static design that lacks accessibility and convert the design to be responsive on different sized displays and accessible for screen reader use. I also began converting this to a Progressive Web Application by caching some assets for offline use.
+
 ## Installing / Getting started
 
 To install this project you need to clone or download it.
