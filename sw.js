@@ -1,41 +1,32 @@
 const CACHE_NAME = 'restaurant-app-v1';
-const urlsToCache = [
-  '/',
-  '/index.html',
-  '/restaurant.html',
-  '/css/styles.css',
-  '/js/dbhelper.js',
-  '/js/main.js',
-  '/js/restaurant_info.js',
-  '/data/restaurants.json',
-  '/img/',
-];
-/* add all image to urlsToCache array  */
-const makeImageNames = () => {
-  const arrayImg = [];
-
+let images = [];
   for (let i = 1; i < 11; i += 1) {
-    arrayImg.push(`/img/${i}-200px.webp`);
-    arrayImg.push(`/img/${i}-400px.webp`);
-    arrayImg.push(`/img/${i}-800px.webp`);
-    arrayImg.push(`/img/${i}-200px.jpg`);
-    arrayImg.push(`/img/${i}-400px.jpg`);
-    arrayImg.push(`/img/${i}-800px.jpg`);
+    images.push(`/img/${i}-200px.webp`);
+    images.push(`/img/${i}-400px.webp`);
+    images.push(`/img/${i}-800px.webp`);
+    images.push(`/img/${i}-200px.jpg`);
+    images.push(`/img/${i}-400px.jpg`);
+    images.push(`/img/${i}-800px.jpg`);
   }
-  return arrayImg;
-};
 
-urlsToCache.concat(makeImageNames());
-
-self.addEventListener('install', (event) => {
-  // Perform install steps
-  event.waitUntil(caches.open(CACHE_NAME)
-    .then((cache) => {
-      console.log('Opened cache');
-      return cache.addAll(urlsToCache);
-    }));
+self.addEventListener('install', event => {
+  //instaling service worker, cache files
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => {
+      cache.addAll(images); // adding images but not passing promise, if add fails main site content are still loaded
+      return cache.addAll([ //adding main site files
+        './',
+        './index.html',
+        './restaurant.html',
+        './js/dbhelper.js',
+        './js/main.js',
+        './js/restaurant_info.js',
+        './data/restaurants.json',
+        './css/styles.css',
+      ]);
+    })
+  );
 });
-
 self.addEventListener('fetch', (event) => {
   event.respondWith(caches.match(event.request)
     .then((response) => {
